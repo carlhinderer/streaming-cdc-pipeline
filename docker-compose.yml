@@ -9,3 +9,20 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  api:
+    image: api-node
+    build: api
+    environment:
+      DB_HOST: postgres
+      DB_USER: retailuser
+      DB_PASSWORD: retailpw
+      DB_DATABASE: retaildb
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:5000/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
