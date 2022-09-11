@@ -1,0 +1,3 @@
+CREATE DATABASE retaildb;
+CREATE USER retailuser WITH PASSWORD 'retailpw';
+GRANT ALL PRIVILEGES ON DATABASE retaildb TO retailuser;
