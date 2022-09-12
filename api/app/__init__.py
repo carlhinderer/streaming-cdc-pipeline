@@ -15,8 +15,9 @@ def create_app(config_name):
 
     db.init_app(app)
 
-    # This is only going to run inside local Docker
-    # db.create_all()
+    # We'll only run this in local Docker
+    app.app_context().push()
+    db.create_all()
 
     # Attach routes and custom error pages here
     return app
