@@ -19,7 +19,7 @@ services:
       DB_PASSWORD: retailpw
       DB_DATABASE: retaildb
     depends_on:
-      db:
+      postgres:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "curl --fail http://localhost:5000/ || exit 1"]

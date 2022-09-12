@@ -4,6 +4,8 @@ RUN apt-get install curl -y
 
 WORKDIR /app
 
+ENV 
+
 COPY requirements.txt .
 
 ENV PIP_ROOT_USER_ACTION=ignore
@@ -15,7 +17,8 @@ RUN pip install -r requirements.txt
 
 COPY src src
 
-ENV FLASK_APP src/retail.py
+ENV FLASK_APP retail.py
+ENV FLASK_CONFIG production
 EXPOSE 5000
 
 CMD ["flask", "run", "--host=0.0.0.0"]
