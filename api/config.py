@@ -19,8 +19,12 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'postgresql+psycopg2://retailuser:retailpw@localhost/retaildb'
+    DB_HOST = os.environ.get('DB_HOST')
+    DB_USER = os.environ.get('DB_USER')
+    DB_PW = os.environ.get('DB_PASSWORD')
+    DB_DATABASE = os.environ.get('DB_DATABASE')
+
+    SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://{DB_USER}:{DB_PW}@{DB_HOST}/{DB_DATABASE}'
 
 
 config = {
