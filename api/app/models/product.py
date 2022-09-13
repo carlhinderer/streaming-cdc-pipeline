@@ -11,7 +11,7 @@ class Product(db.Model):
     color = db.Column(db.String(255))
     brand = db.Column(db.String(255))
     weight = db.Column(db.Integer)
-    price = db.Column(db.Numeric(5,2))
+    price = db.Column(db.Integer)
 
     def __repr__():
         return f'Product: {sku}'
