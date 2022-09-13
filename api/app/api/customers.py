@@ -19,7 +19,6 @@ def get_customer(id):
 
 @api.route('/customers', methods=['POST'])
 def new_customer():
-    breakpoint
     customer = Customer.from_json(request.json)
     db.session.add(customer)
     db.session.commit()

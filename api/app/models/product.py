@@ -13,6 +13,37 @@ class Product(db.Model):
     weight = db.Column(db.Integer)
     price = db.Column(db.Numeric(5,2))
 
-
     def __repr__():
         return f'Product: {sku}'
+
+    def to_json(self):
+        json_product = {
+            'id': self.id,
+            'sku': self.sku,
+            'name': self.name,
+            'description': self.description,
+            'color': self.color,
+            'brand': self.brand,
+            'weight': self.weight,
+            'price': self.price
+        }
+        return json_product
+
+    @staticmethod
+    def from_json(json_product):
+        sku = json_product.get('sku')
+        name = json_product.get('name')
+        description = json_product.get('description')
+        color = json_product.get('color')
+        brand = json_product.get('brand')
+        weight = json_product.get('weight')
+        price = json_product.get('price')
+
+        return Product(sku=sku,
+                       name=name,
+                       description=description,
+                       color=color,
+                       brand=brand,
+                       weight=weight,
+                       price=price
+                      )
