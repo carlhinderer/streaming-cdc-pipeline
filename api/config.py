@@ -13,6 +13,8 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
 
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://retailuser:retailpw@localhost/retaildb'
+
 
 class TestingConfig(Config):
     TESTING = True

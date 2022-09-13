@@ -17,6 +17,7 @@ def create_app(config_name):
 
     # We'll only run this in local Docker
     app.app_context().push()
+    db.drop_all()
     db.create_all()
 
     from .api import api as api_blueprint
