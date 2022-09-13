@@ -22,7 +22,16 @@ services:
       postgres:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "curl --fail http://localhost:5000/ || exit 1"]
+      test: ["CMD-SHELL", "curl --fail http://localhost:5000 || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
+
+  api_client:
+    image: api-client-node
+    build: api-client
+    environment:
+      BASE_URL: http://api:5000
+    depends_on:
+      api:
+        condition: service_healthy
